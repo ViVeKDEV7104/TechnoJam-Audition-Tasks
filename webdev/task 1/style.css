@@ -3,7 +3,7 @@ body {
     margin: 0;
     background-color: #000000; 
     color: white;
-    overflow: hidden; /*when content goes outside the box their is no scroll bar */
+    overflow: scroll; /*when content goes outside the box their is a scroll bar */
     
    }
    
