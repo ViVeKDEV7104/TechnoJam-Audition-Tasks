@@ -1,0 +1,38 @@
+public class Q6 {
+    public static long number_spiral(long y, long x) {
+        // Find the largest number in the row or column
+        long max = Math.max(y, x);
+        long maxVal = max * max;  // This is the last number in the spiral for this row or column
+        
+        // If max is in a row (y == max)
+        if (max % 2 == 0) {
+            // Even max row: decreasing right to left
+            if (y == max) {
+                return maxVal - (x - 1);
+            } else {
+                return maxVal - (2 * max - y);
+            }
+        } else {
+            // Odd max row: increasing left to right
+            if (x == max) {
+                return maxVal - (y - 1);
+            } else {
+                return maxVal - (2 * max - x);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        // Default Test Cases
+        long[][] test_cases = {
+            {2, 3},  // Output: 8
+            {1, 1},  // Output: 1
+            {4, 2}   // Output: 15
+        };
+
+        // Run Test Cases
+        for (long[] test_case : test_cases) {
+            System.out.println(number_spiral(test_case[0], test_case[1]));
+        }
+    }
+}
