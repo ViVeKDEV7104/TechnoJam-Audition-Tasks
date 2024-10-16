@@ -1,0 +1,27 @@
+public class Q3 {
+    public static int rangeBitwiseAnd(int left, int right) {
+        // Shift left and right to the right until they are the same
+        int shift = 0;
+        while (left != right) {
+            left >>= 1;
+            right >>= 1;
+            shift++;
+        }
+        // Shift the result back to the left to get the common prefix
+        return left << shift;
+    }
+
+    public static void main(String[] args) {
+        // Default Test Cases
+        int[][] testCases = {
+            {5, 7},          // Output: 4
+            {0, 0},          // Output: 0
+            {1, 2147483647}  // Output: 0
+        };
+
+        // Run Test Cases
+        for (int[] testCase : testCases) {
+            System.out.println(rangeBitwiseAnd(testCase[0], testCase[1]));
+        }
+    }
+}
