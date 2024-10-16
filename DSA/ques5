@@ -1,0 +1,57 @@
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
+
+public class Q5 {
+    public static ListNode detectCycle(ListNode head) {
+        if (head == null || head.next == null) {
+            return null; // No cycle possible if list is empty or has only one node
+        }
+
+        // Initialize two pointers, slow and fast
+        ListNode slow = head;
+        ListNode fast = head;
+
+        // First step: detect if there is a cycle
+        while (fast != null && fast.next != null) {
+            slow = slow.next;         // Move slow by 1 step
+            fast = fast.next.next;    // Move fast by 2 steps
+            
+            if (slow == fast) {       // Cycle detected
+                // Second step: find the cycle entry point
+                ListNode entry = head;
+                
+                while (entry != slow) {
+                    entry = entry.next;
+                    slow = slow.next;
+                }
+                
+                return entry;  // Cycle entry point found
+            }
+        }
+
+        return null; // No cycle detected
+    }
+
+    public static void main(String[] args) {
+        // Creating a linked list with a cycle
+        ListNode head = new ListNode(3);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(0);
+        head.next.next.next = new ListNode(-4);
+        head.next.next.next.next = head.next;  // Creating a cycle (points to node with value 2)
+
+        ListNode cycleNode = detectCycle(head);
+        
+        if (cycleNode != null) {
+            System.out.println("Cycle detected at node with value: " + cycleNode.val);
+        } else {
+            System.out.println("No cycle detected");
+        }
+    }
+}
