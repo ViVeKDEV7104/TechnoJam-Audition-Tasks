@@ -1,1 +1,9 @@
+Builded a responsive card component layout using CSS Grid.
 
+
+Created an HTML file (index.html) and a CSS file (styles.css).
+The card should include:
+An image 
+A title 
+A description
+Using  CSS flex wrap all different amount of cards can be handled , responsiveness for different screen sizes.
