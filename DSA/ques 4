@@ -1,0 +1,40 @@
+public class Q4 {
+    public static int compress(char[] chars) {
+        int index = 0;  // To keep track of the position to modify the array
+        int i = 0;      // To iterate through the array
+        
+        while (i < chars.length) {
+            char currentChar = chars[i];
+            int count = 0;
+
+            // Count the number of occurrences of the current character
+            while (i < chars.length && chars[i] == currentChar) {
+                i++;
+                count++;
+            }
+
+            // Place the character in the result array
+            chars[index++] = currentChar;
+
+            // If the character appears more than once, append the count
+            if (count > 1) {
+                for (char c : Integer.toString(count).toCharArray()) {
+                    chars[index++] = c;
+                }
+            }
+        }
+
+        // Return the new length of the array after compression
+        return index;
+    }
+
+    public static void main(String[] args) {
+        char[] chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
+        int newSize = compress(chars);
+        System.out.println("New length: " + newSize);
+        for (int i = 0; i < newSize; i++) {
+            System.out.print(chars[i] + " ");
+        }
+        System.out.println();
+    }
+}
