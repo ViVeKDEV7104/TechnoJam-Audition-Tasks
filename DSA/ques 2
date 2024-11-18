@@ -4,7 +4,7 @@ public class Q2 {
             return 1;
         }
 
-        // Create an array to store the number of ways to climb each step
+       
         int[] dp = new int[n + 1];
         
         // Base cases
@@ -16,12 +16,11 @@ public class Q2 {
             dp[i] = dp[i - 1] + dp[i - 2];
         }
 
-        // The result will be stored in dp[n]
         return dp[n];
     }
 
     public static void main(String[] args) {
         int n = 2;
-        System.out.println(climbStairs(n)); // Output: 2
+        System.out.println(climbStairs(n));
     }
 }
